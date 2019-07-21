@@ -128,6 +128,7 @@ if (!function_exists('sm_wcpa_add_child_product_price_to_parent')) {
 		foreach ($child_products as $child_product) {
 			$child_price = (float)sm_wcpa_get_child_product_price($child_product);
 			$get_product = wc_get_product($child_product);
+			
 			//here i placed custom html code refer to my custom template. this will be updated to wc_get_template() function asap.
 //			$child_price_html = strip_tags(wc_price(wc_get_price_to_display($product, array('price' => $child_price))));
 			echo '<li class="nav-item">' .
