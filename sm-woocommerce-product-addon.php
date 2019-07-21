@@ -128,15 +128,16 @@ if (!function_exists('sm_wcpa_add_child_product_price_to_parent')) {
 		foreach ($child_products as $child_product) {
 			$child_price = (float)sm_wcpa_get_child_product_price($child_product);
 			$get_product = wc_get_product($child_product);
+			//here i placed custom html code refer to my custom template. this will be updated to wc_get_template() function asap.
 //			$child_price_html = strip_tags(wc_price(wc_get_price_to_display($product, array('price' => $child_price))));
 			echo '<li class="nav-item">' .
 				'<input type="checkbox" class="form-check-input" name="child_products[' . $child_product . ']" id="child_product-' . $child_product . '" value="1">' .
 				'<label class="form-check-label bg-transparent form-check mb-0 nav-link w-100" for="child_product-' . $child_product . '">' .
 				'<div class="media_prod">' .
-				'<span>' . get_the_post_thumbnail($child_product, [80,80]) . '</span>' .
+				'<span>' . get_the_post_thumbnail($child_product, [80, 80]) . '</span>' .
 				'<div class="des_prod">' .
 				'<h6><strong>' . $get_product->get_title() . '</strong></h6>' .
-				'<strong>' . $get_product->get_price_html().'</strong>' .
+				'<strong>' . $get_product->get_price_html() . '</strong>' .
 				'</div>' .
 				'</div>' .
 				'<input type="hidden" name="child_price[' . $child_product . ']" value="' . $child_price . '">' .
@@ -169,7 +170,7 @@ function add_custom_product_data($cart_item_data, $product_id, $variation_id)
 			$cart_item_data['unique_key'][$index] = md5(microtime() . rand());
 		}
 	}
-
+	
 	return apply_filters('wc_epo_add_cart_item_data', $cart_item_data);
 }
 
